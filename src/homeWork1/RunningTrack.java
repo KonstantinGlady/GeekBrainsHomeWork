@@ -1,6 +1,6 @@
 package homeWork1;
 
-public class RunningTrack {
+public class RunningTrack implements Obstacle {
     private static final int DISTANCE_OF_THE_TRACK = 5;
     private static final String NAME_BY_DEFAULT = "unknown";
     private String name;
@@ -30,5 +30,20 @@ public class RunningTrack {
 
     public void setLength(int length) {
         this.length = length;
+    }
+
+    @Override
+    public boolean getObstacle(Bihavior bihavior) {
+        return (bihavior.runMaxDistance() > length);
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getDescription() {
+        return Integer.toString(length);
     }
 }

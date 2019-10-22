@@ -79,7 +79,7 @@ public class Main {
 
             for (int i = 0; i < challenger.length; i++) {
 
-                if (objects[n] instanceof Wall && challenger[i].isCompete()) {
+              /*  if (objects[n] instanceof Wall && challenger[i].isCompete()) {
                     Wall thisWall = (Wall) objects[n];
                     boolean result = thisWall.jumpThrough(challenger[i]);
                     if (result) {
@@ -98,15 +98,25 @@ public class Main {
                     } else {
                         competeOutMessage(challenger[i]);
                     }
-                }
+                }*/
 
+                if (challenger[i].isCompete()) {
+                    Obstacle obstacle = (Obstacle) objects[n];
+                    boolean result = obstacle.getObstacle(challenger[i]);
+                    if (result) {
+                        System.out.println(challenger[i].getName() + " done obstacle " + obstacle.getName() + " " + obstacle.getDescription());
+                    } else {
+
+                        competeOutMessage(challenger[i]);
+                    }
+                }
             }
         }
 
 
     }
 
-    private static void infoJumpRun(Bihavior bihavior) {
+        private  static void infoJumpRun(Bihavior bihavior) {
         bihavior.jump();
         bihavior.run();
         System.out.println();
